@@ -15,9 +15,9 @@ public class Livre extends Document implements Empruntable {
     }
 
     @Override
-    public void emprunter() {
-        if (!disponible)
-            throw new IllegalStateException("Deja emprunte : " + titre);
+    public void emprunter() throws DocumentIndisponibleException {
+        if (!disponible)                       // avant : IllegalStateException
+            throw new DocumentIndisponibleException(titre);
         disponible = false;
     }
 
