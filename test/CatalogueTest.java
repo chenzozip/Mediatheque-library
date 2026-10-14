@@ -22,4 +22,10 @@ class CatalogueTest {
         c.ajouter(new Revue("Science", 2026, 412));
         assertTrue(c.rechercherParTitre("Nature").isEmpty());
     }
+
+    @Test void recherche_ignore_la_casse() {
+        Catalogue<Document> c = new Catalogue<>();
+        c.ajouter(new Dvd("Inception", 2010, 148));
+        assertTrue(c.rechercherParTitre("INCEPTION").isPresent());
+    }
 }
